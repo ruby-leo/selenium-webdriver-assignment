@@ -12,12 +12,12 @@ public class S03DropdownFunction {
 
     @Given("I am on the Test page")
     public void i_am_on_the_test_page() {
-        Hooks.driver.get("https://seleniumbase.io/demo_page");
+        Hooks.driver.get().get("https://seleniumbase.io/demo_page");
     }
     @When("the value is set randomly")
     public void the_value_is_set_randomly() {
         randomNum = (int) (Math.random() * 3);
-        basePage = new SeleniumBasePage(Hooks.driver);
+        basePage = new SeleniumBasePage(Hooks.driver.get());
         basePage.setDropdownOption(values[randomNum]);
     }
     @Then("the dropdown should have corresponding dropdown option")

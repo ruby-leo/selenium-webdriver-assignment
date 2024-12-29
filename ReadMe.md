@@ -7,6 +7,7 @@
 - Page Factory pattern: To layout page objects
 - Allure reports: For reporting test results
 - Maven: Build tool
+- Parallel test case execution: Done using Maven Sure Fire Plugin
 
 ### Assignment links and notes
 - Assignment 1 [Feature file link](/src/test/resources/features/F01ClickLink.feature)
@@ -19,3 +20,6 @@ Kindly note that one of the test cases (related to registration function with in
 ### Test Report
 Test report is present [here](/allure-report/index.html). This file can be downloaded and opened with any browser to see the results. Alternatively, I have also attached screenshot of the test report below.
 ![Alt text](/src/test/resources/Allure%20Report%20Screenshot.png?raw=true "Title")
+
+### Command to run the test cases
+mvn clean test

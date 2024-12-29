@@ -10,10 +10,10 @@ public class S04RegistrationFunctionality {
     LetCodeSignUpPage signUpPage;
     @Given("I am on the registration page")
     public void openSignUpPage() {
-        Hooks.driver.get("https://letcode.in/");
-        homePage = new LetCodeHomePage(Hooks.driver);
+        Hooks.driver.get().get("https://letcode.in/");
+        homePage = new LetCodeHomePage(Hooks.driver.get());
         homePage.clickSignUp();
-        signUpPage = new LetCodeSignUpPage(Hooks.driver);
+        signUpPage = new LetCodeSignUpPage(Hooks.driver.get());
     }
     @When("I enter a valid email")
     public void enterValidEmail() {

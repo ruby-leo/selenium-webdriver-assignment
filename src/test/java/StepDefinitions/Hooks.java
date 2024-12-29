@@ -14,18 +14,18 @@ import java.io.IOException;
 import java.time.Duration;
 
 public class Hooks {
-    static WebDriver driver;
+    static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     @Before
     public void setup(){
-       driver = new ChromeDriver();
-       driver.manage().window().maximize();
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+       driver.set(new ChromeDriver());
+       driver.get().manage().window().maximize();
+       driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
     @After
     public void teardown(Scenario scenario) throws IOException {
         String fileName = scenario.getName() + " "+ Utilities.generateCurrentDateTime() + ".jpg";
-        byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        byte[] screenshot = ((TakesScreenshot)driver.get()).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment(fileName, new ByteArrayInputStream(screenshot));
-        driver.quit();
+        driver.get().quit();
     }
 }
