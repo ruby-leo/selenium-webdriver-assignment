@@ -24,7 +24,6 @@ public class Hooks {
     @After
     public void teardown(Scenario scenario) throws IOException {
         String fileName = scenario.getName() + " "+ Utilities.generateCurrentDateTime() + ".jpg";
-        //Utilities.takeScreenshot(driver, fileName);
         byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment(fileName, new ByteArrayInputStream(screenshot));
         driver.quit();
